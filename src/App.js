@@ -39,9 +39,23 @@ export default function App() {
           <label htmlFor="Meme template">Meme template:</label>
           <select
             name="Meme template"
-            onChange={(event) => setTemplate(event.currentTarget.value)}
+            onChange={(event) => {
+              setTemplate(event.currentTarget.value);
+              const url = `https://api.memegen.link/images/${
+                event.currentTarget.value
+              }/${topText === 'this_could_be' ? '_' : topText}/${
+                bottomText === 'your_meme' ? '_' : bottomText
+              }.gif?width=300`;
+              setMemeUrl(url);
+              urlsInLocalStorage.push(url);
+              localStorage.setItem(
+                event.currentTarget.value + topText + bottomText,
+                url,
+              );
+            }}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
+                console.log('hisi');
                 const url = `https://api.memegen.link/images/${template}/${
                   topText === 'this_could_be' ? '_' : topText
                 }/${
