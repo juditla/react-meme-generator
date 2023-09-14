@@ -60,9 +60,11 @@ export default function App() {
       <div className="buttons">
         <GenerateButton
           onClick={() => {
-            const url = `https://api.memegen.link/images/${template}/${
-              topText === 'this_could_be' ? '' : topText
-            }/${bottomText === 'your_meme' ? '' : bottomText}.gif?width=300`;
+            const url = `https://api.memegen.link/images/${
+              template === 'oprah' ? '' : template
+            }/${topText === 'this_could_be' ? '' : topText}/${
+              bottomText === 'your_meme' ? '' : bottomText
+            }.gif?width=300`;
             setMemeUrl(url);
             urlsInLocalStorage.push(url);
             localStorage.setItem(template + topText + bottomText, url);
