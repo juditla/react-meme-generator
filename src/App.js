@@ -35,9 +35,8 @@ export default function App() {
           text={bottomText}
           setText={setBottomText}
         />
-        {/* <TextInput name="Meme template" text={template} setText={setTemplate} /> */}
         <div className="select-container">
-          <label htmlFor="Meme template">Template:</label>
+          <label htmlFor="Meme template">Meme template:</label>
           <select
             name="Meme template"
             onChange={(event) => setTemplate(event.currentTarget.value)}
