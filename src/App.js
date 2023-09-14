@@ -40,6 +40,18 @@ export default function App() {
           <select
             name="Meme template"
             onChange={(event) => setTemplate(event.currentTarget.value)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                const url = `https://api.memegen.link/images/${template}/${
+                  topText === 'this_could_be' ? '_' : topText
+                }/${
+                  bottomText === 'your_meme' ? '_' : bottomText
+                }.gif?width=300`;
+                setMemeUrl(url);
+                urlsInLocalStorage.push(url);
+                localStorage.setItem(template + topText + bottomText, url);
+              }
+            }}
           >
             {memeTemplates.map((memeTemplate) => {
               return (
@@ -60,11 +72,9 @@ export default function App() {
       <div className="buttons">
         <GenerateButton
           onClick={() => {
-            const url = `https://api.memegen.link/images/${
-              template === 'oprah' ? '' : template
-            }/${topText === 'this_could_be' ? '' : topText}/${
-              bottomText === 'your_meme' ? '' : bottomText
-            }.gif?width=300`;
+            const url = `https://api.memegen.link/images/${template}/${
+              topText === 'this_could_be' ? '_' : topText
+            }/${bottomText === 'your_meme' ? '_' : bottomText}.gif?width=300`;
             setMemeUrl(url);
             urlsInLocalStorage.push(url);
             localStorage.setItem(template + topText + bottomText, url);
