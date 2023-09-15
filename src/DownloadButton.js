@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 
+// currently downloads multiple images not one gif --> still a todo
+
 export default function DownloadButton(props) {
   return (
     <div>

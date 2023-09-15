@@ -28,6 +28,7 @@ export default function App() {
       <div className="header">
         <h1>Meme Generator</h1>
       </div>
+      {/* Input/Select fields to generate meme */}
       <div className="custom-input">
         <TextInput name="Top text" text={topText} setText={setTopText} />
         <TextInput
@@ -40,6 +41,7 @@ export default function App() {
           <select
             name="Meme template"
             id="Meme template"
+            // change memeUrl on change
             onChange={(event) => {
               setTemplate(event.currentTarget.value);
               const url = `https://api.memegen.link/images/${
@@ -54,6 +56,7 @@ export default function App() {
                 url,
               );
             }}
+            // change memeUrl on enter
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
                 console.log('hisi');
@@ -68,6 +71,7 @@ export default function App() {
               }
             }}
           >
+            {/* generate dropdown/option elements from imported memeTemplate Object */}
             {memeTemplates.map((memeTemplate) => {
               return (
                 <option
@@ -81,9 +85,11 @@ export default function App() {
           </select>
         </div>
       </div>
+      {/* Display current image */}
       <div className="meme">
         <img alt="custom meme" src={memeUrl} data-test-id="meme-image" />
       </div>
+      {/* Generate button with logic to clear top & bottom text from initial value if there is no input */}
       <div className="buttons">
         <GenerateButton
           onClick={() => {
@@ -97,9 +103,11 @@ export default function App() {
         />
         <DownloadButton url={memeUrl} />
       </div>
+      {/* Get search history from localStorage */}
       <div className="header search-history">
         <h1>Search history</h1>
         {Object.keys(localStorage).map((key) => {
+          // elements that are always in localStorage should be skipped
           if (
             key !== 'ally-supports-cache' &&
             key !== 'web-vitals-extension-metrics'
