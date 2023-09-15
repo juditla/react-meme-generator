@@ -38,6 +38,9 @@ body {
   justify-content: space-between;
   flex-direction: row;
   gap: 8px;
+  overflow: scroll;
+  height: 550px;
+  overscroll-behavior-y: none;
 }
 
 .search-history img {
