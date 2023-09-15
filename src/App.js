@@ -39,6 +39,7 @@ export default function App() {
           <label htmlFor="Meme template">Meme template:</label>
           <select
             name="Meme template"
+            id="Meme template"
             onChange={(event) => {
               setTemplate(event.currentTarget.value);
               const url = `https://api.memegen.link/images/${
