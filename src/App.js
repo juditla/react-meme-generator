@@ -12,17 +12,6 @@ export default function App() {
     `https://api.memegen.link/images/${template}/${topText}/${bottomText}.gif?width=300`,
   );
 
-  const keysInLocalStorage = Object.keys(localStorage);
-  const urlsInLocalStorage = [];
-  keysInLocalStorage.forEach((key) => {
-    if (
-      key !== 'ally-supports-cache' &&
-      key !== 'web-vitals-extension-metrics'
-    ) {
-      urlsInLocalStorage.push(localStorage.getItem(key));
-    }
-  });
-
   return (
     <>
       <div className="header">
@@ -50,7 +39,6 @@ export default function App() {
                 bottomText === 'your_meme' ? '_' : bottomText
               }.gif?width=300`;
               setMemeUrl(url);
-              urlsInLocalStorage.push(url);
               localStorage.setItem(
                 event.currentTarget.value + topText + bottomText,
                 url,
@@ -59,14 +47,12 @@ export default function App() {
             // change memeUrl on enter
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
-                console.log('hisi');
                 const url = `https://api.memegen.link/images/${template}/${
                   topText === 'this_could_be' ? '_' : topText
                 }/${
                   bottomText === 'your_meme' ? '_' : bottomText
                 }.gif?width=300`;
                 setMemeUrl(url);
-                urlsInLocalStorage.push(url);
                 localStorage.setItem(template + topText + bottomText, url);
               }
             }}
@@ -97,7 +83,6 @@ export default function App() {
               topText === 'this_could_be' ? '_' : topText
             }/${bottomText === 'your_meme' ? '_' : bottomText}.gif?width=300`;
             setMemeUrl(url);
-            urlsInLocalStorage.push(url);
             localStorage.setItem(template + topText + bottomText, url);
           }}
         />
