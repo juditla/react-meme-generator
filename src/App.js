@@ -61,7 +61,7 @@ export default function App() {
             {memeTemplates.map((memeTemplate) => {
               return (
                 <option
-                  value={memeTemplate.id}
+                  value={memeTemplate.name}
                   key={`template-${memeTemplate.id}`}
                 >
                   {memeTemplate.id}
